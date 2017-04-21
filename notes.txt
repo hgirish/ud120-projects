@@ -5,7 +5,7 @@ Adaboost
 randomforest
 ('accuracy: ', 0.90400000000000003)
 
-SyntaxError: invalid syntax
+
 >>> for k in enron_data:
 ...  n+= 1 if enron_data[k]['poi'] == True else 0
 
@@ -21,3 +21,4 @@ SyntaxError: invalid syntax
 ...  n += 1 if not enron_data[k]['salary'] == 'NaN' else 0
 ...
 >>> n
+>>> total = len(enron_data.keys())
