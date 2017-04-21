@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+import sys
+sys.path.append("../tools/")
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
@@ -30,10 +32,23 @@ plt.show()
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
+from sklearn.neighbors import KNeighborsClassifier
 
-
-
-
+from time import time
+knn = int(input("Enter K neighbors value: "))
+print("K-NN value: {0}".format(knn))
+clf = KNeighborsClassifier(n_neighbors=knn)
+t0 = time()
+clf.fit(features_train, labels_train)
+print("Training  time: {0:.3f} seconds".format(time()-t0))
+t0 = time()
+pred = clf.predict(features_test)
+print("Predict  time: {0:.3f} seconds".format(time()-t0))
+from sklearn.metrics import accuracy_score
+t0 = time()
+accuracy = accuracy_score(labels_test,pred)
+print("Accuracy  time: {0:.3f} seconds".format(time()-t0))
+print("accuracy: ",accuracy)
 
 
 
@@ -41,4 +56,5 @@ plt.show()
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
+    print("Error occured")
     pass
