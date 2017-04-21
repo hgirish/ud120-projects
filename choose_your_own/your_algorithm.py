@@ -32,12 +32,13 @@ plt.show()
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
-from sklearn.neighbors import KNeighborsClassifier
-
+#from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import AdaBoostClassifier
 from time import time
-knn = int(input("Enter K neighbors value: "))
-print("K-NN value: {0}".format(knn))
-clf = KNeighborsClassifier(n_neighbors=knn)
+#knn = int(input("Enter K neighbors value: "))
+#print("K-NN value: {0}".format(knn))
+#clf = KNeighborsClassifier(n_neighbors=knn)
+clf = AdaBoostClassifier(n_estimators=50)
 t0 = time()
 clf.fit(features_train, labels_train)
 print("Training  time: {0:.3f} seconds".format(time()-t0))
