@@ -44,8 +44,8 @@ reg.fit(feature_train, target_train)
 print("Coefficients: {0}".format(reg.coef_))
 print("Intercept: {0}".format(reg.intercept_))
 
-pred = reg.predict(feature_train)
-score = reg.score(feature_train, target_train)
+pred = reg.predict(feature_test)
+score = reg.score(feature_test, target_test)
 
 print("score: {0}".format(score))
 
