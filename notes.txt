@@ -22,3 +22,21 @@ randomforest
 ...
 >>> n
 >>> total = len(enron_data.keys())
+
+import pickle
+data = pickle.load(open("final_project/final_project_dataset.pkl", "r"))
+
+>>> p  = 0
+>>> for k in data:
+...  p += 1 if data[k]['poi'] == True else 0
+...
+>>> p
+18
+>>> 18 / 146.0
+0.1232876712328767
+>>> n  = 0
+>>> for k in data:
+...  n += 1 if  data[k]['total_payments'] == 'NaN' and data[k]['poi'] == True else 0
+...
+>>> n
+0
