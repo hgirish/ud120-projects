@@ -64,3 +64,6 @@ bonus = lastTuple[1]
   for t, c in v.iteritems():
    if t == 'salary' and c == salary:
      print(t, c, k)
+
+
+# notes for myself
