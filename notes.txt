@@ -40,3 +40,27 @@ data = pickle.load(open("final_project/final_project_dataset.pkl", "r"))
 ...
 >>> n
 0
+### get key of outlier
+import pickle
+import sys
+import matplotlib.pyplot
+sys.path.append("../tools/")
+from feature_format import featureFormat, targetFeatureSplit
+
+
+### read in data dictionary, convert to numpy array
+data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
+features = ["salary", "bonus"]
+data = featureFormat(data_dict, features)
+# sort data
+ sortedTuple = sorted(data, key=lambda tup: tup[0])
+# find last  
+lastTuple = sortedTuple[len(sortedTuple-1)]
+salary = lastTuple[0]
+bonus = lastTuple[1]
+
+ for k, v in data_dict.iteritems():
+ if type(v) is dict:
+  for t, c in v.iteritems():
+   if t == 'salary' and c == salary:
+     print(t, c, k)
