@@ -67,3 +67,18 @@ bonus = lastTuple[1]
 
 
 # notes for myself
+# find the minimum and maximum exercised_stock_options from interpreter
+>>> import pickle
+>>> data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
+>>> data_dict.pop("TOTAL", 0)
+>>> data = []
+>>> for k,v in data_dict.iteritems():
+...  if v['exercised_stock_options'] != 'NaN':
+...   tup = (k,float(v['exercised_stock_options']))
+...   data.append(tup)
+...
+>>> sorted(data,key=lambda t: t[1], reverse=False)[0]
+('BELFER ROBERT', 3285.0)
+>>> sorted(data,key=lambda t: t[1], reverse=True)[0]
+('LAY KENNETH L', 34348384.0)
+>>>
