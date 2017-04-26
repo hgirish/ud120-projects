@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-
+from sklearn.preprocessing import MinMaxScaler
 
 
 
@@ -50,16 +50,46 @@ feature_1 = "salary"
 feature_2 = "exercised_stock_options"
 feature_3 = "total_payments"
 poi  = "poi"
-features_list = [poi, feature_1, feature_2,feature_3]
+features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data )
+
+
+salary = []
+ex_stock = []
+for users in data_dict:
+    sal = data_dict[users]['salary']
+    if sal == "NaN":
+        continue
+    salary.append(float(sal))
+    stockoption = data_dict[users]["exercised_stock_options"]
+    if stockoption == "NaN":
+        continue
+    ex_stock.append(float(stockoption))
+
+salaryarr = [min(salary), 200000.0, max(salary)]
+exstockarr = [min(ex_stock), 1000000.0, max(ex_stock)]
+print salaryarr
+print exstockarr
+salary = numpy.array([[e] for e in salaryarr])
+ex_stock = numpy.array([[e] for e in exstockarr])
+
+scalerSalary = MinMaxScaler()
+scalerStock = MinMaxScaler()
+
+rescaledSalary = scalerSalary.fit_transform(salary)
+rescaledStock = scalerStock.fit_transform(ex_stock)
+
+print("rescaled salary: {0}".format(rescaledSalary)) ## rescaledSalary
+print("rescaled stock: {0}".format(rescaledStock))
+
 
 
 ### in the "clustering with 3 features" part of the mini-project,
 ### you'll want to change this line to 
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
-for f1, f2, f3 in finance_features:
+for f1, f2 in finance_features:
     plt.scatter( f1, f2 )
 plt.show()
 
@@ -69,6 +99,7 @@ from sklearn.cluster import KMeans
 clf = KMeans(n_clusters=2)
 clf.fit(data)
 pred = clf.predict(data)
+
 
 
 ### rename the "name" parameter when you change the number of features
