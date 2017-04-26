@@ -59,13 +59,11 @@ salary = []
 ex_stock = []
 for users in data_dict:
     sal = data_dict[users]['salary']
-    if sal == "NaN":
-        continue
-    salary.append(float(sal))
+    if sal != "NaN":
+        salary.append(float(sal))
     stockoption = data_dict[users]["exercised_stock_options"]
-    if stockoption == "NaN":
-        continue
-    ex_stock.append(float(stockoption))
+    if stockoption != "NaN":
+        ex_stock.append(float(stockoption))
 
 salaryarr = [min(salary), 200000.0, max(salary)]
 exstockarr = [min(ex_stock), 1000000.0, max(ex_stock)]
