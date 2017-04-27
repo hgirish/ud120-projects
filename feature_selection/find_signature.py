@@ -38,6 +38,14 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
-
-
+from time import time
+from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier
+clf = DecisionTreeClassifier()
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+t0 = time()
+accuracy = accuracy_score(labels_test, pred)
+print("Accuracy  time: {0:.3f} seconds".format(time()-t0))
+print("The accuracy is: {0}".format(accuracy))
 
