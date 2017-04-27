@@ -37,6 +37,7 @@ def parseOutText(f):
         stemmer = SnowballStemmer("english")
         words = [stemmer.stem(word) for word in words]
         words  = ' '.join(words)
+       
 
 
 
