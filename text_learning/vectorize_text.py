@@ -84,4 +84,5 @@ vectorizer = TfidfVectorizer(stop_words="english")
 vectorizer.fit_transform(word_data)
 feature_names = vectorizer.get_feature_names()
 print("Total feature_names: {0}".format(len(feature_names)))
-
+print("feature_names[34596]: {0}".format(feature_names[34596]))
+print("feature_names[34597]: {0}".format(feature_names[34597]))
