@@ -50,7 +50,9 @@ print("Accuracy  time: {0:.3f} seconds".format(time()-t0))
 print("The accuracy is: {0}".format(accuracy))
 
 importances = clf.feature_importances_
-
+names = vectorizer.get_feature_names()
 for i in range(0,len(importances)):
     if importances[i] > 0.02:
-        print("{0} : {1}".format(i, importances[i]))
+        print("{0} : {1}, name: {2}".format(i, importances[i], names[i]))
+
+
