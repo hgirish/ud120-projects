@@ -82,3 +82,10 @@ bonus = lastTuple[1]
 >>> sorted(data,key=lambda t: t[1], reverse=True)[0]
 ('LAY KENNETH L', 34348384.0)
 >>>
+
+if you get below error while running eigenfaces.py
+   raise ImportError("The Python Imaging Library (PIL)"
+ImportError: The Python Imaging Library (PIL) is required to load data from jpeg files
+
+you need to install Pillow
+pip install Pillow
