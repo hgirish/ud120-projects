@@ -23,7 +23,7 @@ from time import time
 import logging
 import pylab as pl
 import numpy as np
-
+import sys
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import fetch_lfw_people
 from sklearn.model_selection import GridSearchCV
@@ -68,6 +68,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 # Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled
 # dataset): unsupervised feature extraction / dimensionality reduction
 n_components = 150
+if len(sys.argv) > 1:
+    n_components = int(sys.argv[1])
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
