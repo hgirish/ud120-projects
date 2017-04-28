@@ -81,7 +81,10 @@ t0 = time()
 X_train_pca = pca.transform(X_train)
 X_test_pca = pca.transform(X_test)
 print "done in %0.3fs" % (time() - t0)
-print("pca.explained_variance_ratio: {0}".format(pca.explained_variance_ratio_))
+ratio = pca.explained_variance_ratio_
+
+print("first pca.explained_variance_ratio: {0}".format(ratio[0]))
+print("second pca.explained_variance_ration: {0}".format(ratio[1]))
 print("first pc: ".format(pca.components_[0]))
 print("second pc: ".format(pca.components_[1]))
 ###############################################################################
