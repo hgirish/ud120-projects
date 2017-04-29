@@ -40,3 +40,5 @@ clf.fit(feature_train, label_train)
 pred = clf.predict(feature_test)
 accuracy = accuracy_score(label_test, pred)
 print("The accuracy is: {0}".format(accuracy))
+# labels are either 0.0 or 1.0, 1.0 is poi
+print("poi in test data: {0}".format(label_test.count(1.0)))
